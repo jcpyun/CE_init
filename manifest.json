@@ -1,0 +1,41 @@
+{
+  "name": "CE_init",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "For Fast Deployment of Chrome Extensions",
+  "browser_action": {
+    "default_icon": "assets/jcp.png",
+    "default_popup": "pop.html"
+  },
+  "chrome_url_overrides" : {
+    "newtab": "tab.html"
+  },
+  "background": {
+      "scripts":["background.js","jquery-3.1.0.js","infiltrate.js","clicked.js"],
+      "persistent":false //what is this
+  },
+  "icons":{
+    "64" : "assets/jcp.png",
+    "32" : "assets/jcp.png",
+    "16" : "assets/jcp.png",
+    "128" : "assets/jcp.png"
+  },
+  "content_scripts":[
+      {
+          "matches": ["http://*/*", "https://*/*","http://jquery.com/*","<all_urls>"],
+          // "css":["bs/css/bootstrap.min.css"],
+          "css": [],
+          "js": ["jquery-3.1.0.js","cs.js"]
+      }
+  ],
+ "web_accessible_resources": [
+    // any audio file or video file goes here
+  ],
+  "permissions": ["tabs", "<all_urls>","http://www.google.com/*",
+          "http://*/*",
+          "https://*/*",
+          "background",
+          "storage",
+          "webNavigation",
+          "activeTab"]
+}
